@@ -8,17 +8,19 @@ package recipesearch;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import se.chalmers.ait.dat215.lab2.Recipe;
 
 public class RecipeSearch implements PropertyChangeListener {
 
-    private RecipeView rv = new RecipeView();
+    //private RecipeView rv = new RecipeView();
     private RecipeSearchView rsv = new RecipeSearchView();
+    private TestClass test;
     
     public RecipeSearch() {
-        rv.addObserver(this);
+        //rv.addObserver(this);
         rsv.addObserver(this);
         rsv.setVisible(true);
-
+        test = new TestClass();
     }
     
     /**
@@ -47,16 +49,28 @@ public class RecipeSearch implements PropertyChangeListener {
             }
         }));
     }
-
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if(evt.getPropertyName().equals("recipe")){
+        RecipeView rv = new RecipeView();
+        //System.out.println("entering propertyChange in RecipeSearch");
+        /*if(evt.getPropertyName().equals("recipe")){
+            rsv.setVisible(false);
+            rv.setVisible(true);
+        } else */
+        if(evt.getPropertyName().equals("back")) {
+            rv.setVisible(false);
+            rsv.setVisible(true);
+        } else if(evt.getPropertyName().equals("search")) {
+            rsv.updateView();
+            //rsv.validate();
+            //rsv.repaint();  
+        } else if (evt.getNewValue() instanceof Recipe) {
+            System.out.println("recipe!!!!!!");
+            rv = new RecipeView((Recipe)evt.getNewValue());
+            rv.addObserver(this);
             rsv.setVisible(false);
             rv.setVisible(true);
         }
-        else if(evt.getPropertyName().equals("back")) {
-            rv.setVisible(false);
-            rsv.setVisible(true);
-        }
     }
+    
 }

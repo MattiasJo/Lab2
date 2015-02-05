@@ -5,6 +5,8 @@
  */
 package recipesearch;
 
+import se.chalmers.ait.dat215.lab2.Recipe;
+
 /**
  *
  * @author Mattias
@@ -17,6 +19,13 @@ public class RecipePanel extends javax.swing.JPanel {
     public RecipePanel() {
         initComponents();
     }
+    /*
+    public RecipePanel(Recipe recipe) {
+        initComponents();
+        timeLabel.setText(Integer.toString(recipe.getTime()));
+        this.add(timeLabel);
+        timeLabel.setVisible(true);
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +38,7 @@ public class RecipePanel extends javax.swing.JPanel {
 
         recipeIconLabel = new javax.swing.JPanel();
         timeLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout recipeIconLabelLayout = new javax.swing.GroupLayout(recipeIconLabel);
         recipeIconLabel.setLayout(recipeIconLabelLayout);
@@ -44,10 +53,10 @@ public class RecipePanel extends javax.swing.JPanel {
 
         timeLabel.setText("x min");
 
-        jButton1.setText("Se recept");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setText("Se recept");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchButtonActionPerformed(evt);
             }
         });
 
@@ -63,7 +72,7 @@ public class RecipePanel extends javax.swing.JPanel {
                         .addGap(6, 6, 6)
                         .addComponent(timeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(searchButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -73,20 +82,20 @@ public class RecipePanel extends javax.swing.JPanel {
                 .addComponent(recipeIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(searchButton)
                     .addComponent(timeLabel))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_searchButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel recipeIconLabel;
+    private javax.swing.JButton searchButton;
     private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables
 }

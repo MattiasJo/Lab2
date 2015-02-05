@@ -24,7 +24,7 @@
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="timeLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="45" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="searchButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -38,7 +38,7 @@
               <Component id="recipeIconLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="timeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -67,12 +67,12 @@
         <Property name="text" type="java.lang.String" value="x min"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="searchButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Se recept"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

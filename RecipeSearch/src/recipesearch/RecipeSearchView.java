@@ -1,8 +1,11 @@
 package recipesearch;
 
+import java.awt.FlowLayout;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import se.chalmers.ait.dat215.lab2.RecipeDatabase;
+import java.util.List;
+import se.chalmers.ait.dat215.lab2.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,9 +13,9 @@ import se.chalmers.ait.dat215.lab2.RecipeDatabase;
  * and open the template in the editor.
  */
 
-public class RecipeSearchView extends javax.swing.JFrame {
+public class RecipeSearchView extends javax.swing.JFrame implements PropertyChangeListener {
 
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     
     /**
      * Creates new form ExampleApplicationView
@@ -44,6 +47,7 @@ public class RecipeSearchView extends javax.swing.JFrame {
         maxPriceLabel = new javax.swing.JLabel();
         cuisineLabel = new javax.swing.JLabel();
         difficultyLabel = new javax.swing.JLabel();
+        searchButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -53,32 +57,36 @@ public class RecipeSearchView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("recipesearch/resources/RecipeSearch"); // NOI18N
         setTitle(bundle.getString("Application.title")); // NOI18N
-        setLocation(new java.awt.Point(125, 150));
         setName("applicationFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(678, 476));
+
+        typeOfFoodPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                typeOfFoodPaneMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout allCategoriesPanelLayout = new javax.swing.GroupLayout(allCategoriesPanel);
         allCategoriesPanel.setLayout(allCategoriesPanelLayout);
         allCategoriesPanelLayout.setHorizontalGroup(
             allCategoriesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 648, Short.MAX_VALUE)
+            .addGap(0, 645, Short.MAX_VALUE)
         );
         allCategoriesPanelLayout.setVerticalGroup(
             allCategoriesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGap(0, 348, Short.MAX_VALUE)
         );
 
-        typeOfFoodPane.addTab("Alla kategorier", allCategoriesPanel);
+        typeOfFoodPane.addTab("Alla kategorier", null, allCategoriesPanel, "");
 
         javax.swing.GroupLayout meatPanelLayout = new javax.swing.GroupLayout(meatPanel);
         meatPanel.setLayout(meatPanelLayout);
         meatPanelLayout.setHorizontalGroup(
             meatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 648, Short.MAX_VALUE)
+            .addGap(0, 645, Short.MAX_VALUE)
         );
         meatPanelLayout.setVerticalGroup(
             meatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGap(0, 348, Short.MAX_VALUE)
         );
 
         typeOfFoodPane.addTab("Kött", meatPanel);
@@ -87,11 +95,11 @@ public class RecipeSearchView extends javax.swing.JFrame {
         fishPanel.setLayout(fishPanelLayout);
         fishPanelLayout.setHorizontalGroup(
             fishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 648, Short.MAX_VALUE)
+            .addGap(0, 645, Short.MAX_VALUE)
         );
         fishPanelLayout.setVerticalGroup(
             fishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGap(0, 348, Short.MAX_VALUE)
         );
 
         typeOfFoodPane.addTab("Fisk", fishPanel);
@@ -100,11 +108,11 @@ public class RecipeSearchView extends javax.swing.JFrame {
         vegoPanel.setLayout(vegoPanelLayout);
         vegoPanelLayout.setHorizontalGroup(
             vegoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 648, Short.MAX_VALUE)
+            .addGap(0, 645, Short.MAX_VALUE)
         );
         vegoPanelLayout.setVerticalGroup(
             vegoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGap(0, 348, Short.MAX_VALUE)
         );
 
         typeOfFoodPane.addTab("Vegetariskt", vegoPanel);
@@ -115,43 +123,23 @@ public class RecipeSearchView extends javax.swing.JFrame {
         chickenPanel.setLayout(chickenPanelLayout);
         chickenPanelLayout.setHorizontalGroup(
             chickenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 648, Short.MAX_VALUE)
+            .addGap(0, 645, Short.MAX_VALUE)
         );
         chickenPanelLayout.setVerticalGroup(
             chickenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGap(0, 348, Short.MAX_VALUE)
         );
 
         typeOfFoodPane.addTab("Kyckling", chickenPanel);
 
         maxTime.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "120", "130", "140", "150" }));
         maxTime.setAutoscrolls(true);
-        maxTime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maxTimeActionPerformed(evt);
-            }
-        });
 
         maxPrice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "20", "40", "60", "80", "100", "150", "200", "250", "300" }));
-        maxPrice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maxPriceActionPerformed(evt);
-            }
-        });
 
         difficulty.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Lätt", "Mellan", "Svår" }));
-        difficulty.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                difficultyActionPerformed(evt);
-            }
-        });
 
         cuisine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Sverige", "Grekland", "Indien", "Asien", "Afrika", "Frankrike" }));
-        cuisine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cuisineActionPerformed(evt);
-            }
-        });
 
         maxTimeLabel.setText("Max tid:");
 
@@ -160,6 +148,13 @@ public class RecipeSearchView extends javax.swing.JFrame {
         cuisineLabel.setText("Kök:");
 
         difficultyLabel.setText("Svårighetsgrad:");
+
+        searchButton.setText("Sök");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("recipesearch/resources/RecipeSearchView"); // NOI18N
         fileMenu.setText(bundle1.getString("fileMenu.text")); // NOI18N
@@ -203,38 +198,41 @@ public class RecipeSearchView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(maxTime, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(maxPrice, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cuisineLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(difficultyLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(difficultyLabel)
+                            .addComponent(cuisineLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cuisine, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(difficulty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(typeOfFoodPane))
+                            .addComponent(difficulty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cuisine, 0, 89, Short.MAX_VALUE))
+                        .addGap(296, 296, 296)
+                        .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(typeOfFoodPane, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(maxTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maxTimeLabel)
+                    .addComponent(difficultyLabel)
+                    .addComponent(difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(maxTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(maxTimeLabel))
                         .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(maxPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(maxPriceLabel)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(maxPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(maxPriceLabel))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cuisineLabel)
+                                .addComponent(searchButton))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(difficultyLabel))
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cuisine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cuisineLabel))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cuisine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(typeOfFoodPane)
                 .addContainerGap())
@@ -250,28 +248,80 @@ public class RecipeSearchView extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
+    
+    private void typeOfFoodPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_typeOfFoodPaneMouseClicked
+        switch(typeOfFoodPane.getSelectedIndex()){
+            case 0:
+                    typeOfFood=null;
+                    break;
+            case 1:
+                    typeOfFood="Kött";
+                    break;
+            case 2:
+                    typeOfFood="Fisk";
+                    break;
+            case 3:
+                    typeOfFood="Vegetarisk";
+                    break;
+            case 4:
+                    typeOfFood="Kyckling";
+                    break;
+            default:
+                    break;
+        }
+        recipes = db.search(new SearchFilter(difficulty.toString(), Integer.parseInt(maxTime.getSelectedItem().toString()), cuisine.toString(), Integer.parseInt(maxPrice.getSelectedItem().toString()), typeOfFood));
+        pcs.firePropertyChange("search", true, false);
+    }//GEN-LAST:event_typeOfFoodPaneMouseClicked
 
-    private void maxPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxPriceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maxPriceActionPerformed
-
-    private void maxTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxTimeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maxTimeActionPerformed
-
-    private void difficultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_difficultyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_difficultyActionPerformed
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        recipes = db.search(new SearchFilter(difficulty.toString(), Integer.parseInt(maxTime.getSelectedItem().toString()), cuisine.toString(), Integer.parseInt(maxPrice.getSelectedItem().toString()), typeOfFood));
+        pcs.firePropertyChange("search", true, false);
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     private void cuisineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuisineActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cuisineActionPerformed
 
+    public void updateView() {
+        javax.swing.JPanel temp;
+        switch(typeOfFoodPane.getSelectedIndex()){
+            case 0:
+                    temp = allCategoriesPanel;
+                    break;
+            case 1:
+                    temp = meatPanel;
+                    break;
+            case 2:
+                    temp = fishPanel;
+                    break;
+            case 3:
+                    temp = vegoPanel;
+                    break;
+            case 4:
+                    temp = chickenPanel;
+                    break;
+            default:
+                    temp = allCategoriesPanel;
+                    break;
+        }   
+        temp.setLayout(new FlowLayout());
+        for (Recipe recipe : recipes) {
+            //RecipePanel rp = new RecipePanel(recipe);
+            //rp.addObserver(this);
+            //temp.add(rp);
+            RecipePanelTest rpt = new RecipePanelTest(recipe);
+            rpt.addObserver(this);
+            temp.add(rpt);
+        }
+    }
+    
     public void addObserver(PropertyChangeListener observer) { 
         this.pcs.addPropertyChangeListener(observer);
     }
     
     RecipeDatabase db = RecipeDatabase.getSharedInstance();
+    private String typeOfFood;
+    private List<Recipe> recipes;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel allCategoriesPanel;
@@ -290,7 +340,113 @@ public class RecipeSearchView extends javax.swing.JFrame {
     private javax.swing.JLabel maxTimeLabel;
     private javax.swing.JPanel meatPanel;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JButton searchButton;
     private javax.swing.JTabbedPane typeOfFoodPane;
     private javax.swing.JPanel vegoPanel;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("propertyChange in RecipeSearchView");
+        pcs.firePropertyChange(evt.getPropertyName(), evt.getOldValue(), evt.getNewValue());;
+    }
+
+    private class RecipePanel extends javax.swing.JPanel {
+
+        /**
+         * Creates new form RecipePanel
+         */
+        
+        public RecipePanel(Recipe recipe) {
+            this.recipe = recipe;
+            initComponents();
+            timeLabel.setText(Integer.toString(recipe.getTime()));
+            this.add(timeLabel);
+            //timeLabel.setVisible(true);
+            //icon.setIcon(recipe.getImage());
+            //this.add(icon);
+            //icon.setVisible(true);
+            //recipeIconPanel.add(recipe.getImage());
+        }
+        
+        //public void addObserver(PropertyChangeListener observer) {
+            //this.panelPCS.addPropertyChangeListener(observer);
+        //}
+
+        /**
+         * This method is called from within the constructor to initialize the form.
+         * WARNING: Do NOT modify this code. The content of this method is always
+         * regenerated by the Form Editor.
+         */
+        @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+        private void initComponents() {
+
+            recipeIconPanel = new javax.swing.JPanel();
+            timeLabel = new javax.swing.JLabel();
+            searchButton = new javax.swing.JButton();
+
+            javax.swing.GroupLayout recipeIconLabelLayout = new javax.swing.GroupLayout(recipeIconPanel);
+            recipeIconPanel.setLayout(recipeIconLabelLayout);
+            recipeIconLabelLayout.setHorizontalGroup(
+                recipeIconLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, Short.MAX_VALUE)
+            );
+            recipeIconLabelLayout.setVerticalGroup(
+                recipeIconLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 95, Short.MAX_VALUE)
+            );
+
+            timeLabel.setText("x min");
+
+            searchButton.setText("Se recept");
+            searchButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    searchButtonActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+            this.setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(recipeIconPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(timeLabel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                            .addComponent(searchButton)))
+                    .addContainerGap())
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(recipeIconPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchButton)
+                        .addComponent(timeLabel))
+                    .addContainerGap())
+            );
+        }// </editor-fold>                        
+
+        private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
+            //this.panelPCS.firePropertyChange(recipe.getName(), recipe, recipe);
+            System.out.println("Firing PropertyChange in panel's ActionPerformed");
+        }
+
+        // Variables declaration - do not modify                     
+        private javax.swing.JButton searchButton;
+        private javax.swing.JPanel recipeIconPanel;
+        private javax.swing.JLabel timeLabel;
+        private javax.swing.JLabel icon;
+        private final Recipe recipe;
+        //private final PropertyChangeSupport panelPCS = new PropertyChangeSupport(this);
+        // End of variables declaration                   
+    }
+
 }

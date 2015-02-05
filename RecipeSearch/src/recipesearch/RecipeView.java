@@ -7,8 +7,7 @@ package recipesearch;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.Observable;
-import java.util.Observer;
+import se.chalmers.ait.dat215.lab2.Recipe;
 
 /**
  *
@@ -21,6 +20,11 @@ public class RecipeView extends javax.swing.JFrame {
     /**
      * Creates new form RecipeView
      */
+    public RecipeView(Recipe recipe) {
+        initComponents();
+        recipeNameLabel.setText(recipe.getName());
+    }
+    
     public RecipeView() {
         initComponents();
     }
@@ -40,17 +44,18 @@ public class RecipeView extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         backward = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        recipeNameLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jSplitPane2 = new javax.swing.JSplitPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(125, 150));
         setPreferredSize(new java.awt.Dimension(678, 476));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -62,7 +67,7 @@ public class RecipeView extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("<receptnamn>");
+        recipeNameLabel.setText("<receptnamn>");
 
         jLabel2.setText("Antal portioner:");
 
@@ -81,7 +86,7 @@ public class RecipeView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(backward, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addComponent(jLabel1)
+                .addComponent(recipeNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -94,11 +99,17 @@ public class RecipeView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backward)
-                    .addComponent(jLabel1)
+                    .addComponent(recipeNameLabel)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jSplitPane2.setLeftComponent(jScrollPane1);
 
         jMenu1.setText("File");
 
@@ -185,13 +196,15 @@ public class RecipeView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backward;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel recipeNameLabel;
     // End of variables declaration//GEN-END:variables
 }
