@@ -93,12 +93,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="difficulty" max="32767" attributes="0"/>
-                          <Component id="cuisine" pref="89" max="32767" attributes="0"/>
+                          <Component id="cuisine" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
                       <Component id="searchButton" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="typeOfFoodPane" pref="658" max="32767" attributes="0"/>
+                  <Component id="typeOfFoodPane" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -149,6 +149,9 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="allCategoriesPanel">
+          <Properties>
+            <Property name="autoscrolls" type="boolean" value="true"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Alla kategorier" toolTip="">
@@ -161,7 +164,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="645" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="721" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -183,7 +186,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="645" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="721" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -205,7 +208,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="645" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="721" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -227,7 +230,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="645" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="721" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -252,7 +255,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="645" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="721" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

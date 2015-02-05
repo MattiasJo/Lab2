@@ -1,5 +1,6 @@
 package recipesearch;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -65,11 +66,13 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
             }
         });
 
+        allCategoriesPanel.setAutoscrolls(true);
+
         javax.swing.GroupLayout allCategoriesPanelLayout = new javax.swing.GroupLayout(allCategoriesPanel);
         allCategoriesPanel.setLayout(allCategoriesPanelLayout);
         allCategoriesPanelLayout.setHorizontalGroup(
             allCategoriesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
+            .addGap(0, 721, Short.MAX_VALUE)
         );
         allCategoriesPanelLayout.setVerticalGroup(
             allCategoriesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +85,7 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
         meatPanel.setLayout(meatPanelLayout);
         meatPanelLayout.setHorizontalGroup(
             meatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
+            .addGap(0, 721, Short.MAX_VALUE)
         );
         meatPanelLayout.setVerticalGroup(
             meatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +98,7 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
         fishPanel.setLayout(fishPanelLayout);
         fishPanelLayout.setHorizontalGroup(
             fishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
+            .addGap(0, 721, Short.MAX_VALUE)
         );
         fishPanelLayout.setVerticalGroup(
             fishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +111,7 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
         vegoPanel.setLayout(vegoPanelLayout);
         vegoPanelLayout.setHorizontalGroup(
             vegoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
+            .addGap(0, 721, Short.MAX_VALUE)
         );
         vegoPanelLayout.setVerticalGroup(
             vegoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +126,7 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
         chickenPanel.setLayout(chickenPanelLayout);
         chickenPanelLayout.setHorizontalGroup(
             chickenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
+            .addGap(0, 721, Short.MAX_VALUE)
         );
         chickenPanelLayout.setVerticalGroup(
             chickenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,10 +208,10 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(difficulty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cuisine, 0, 89, Short.MAX_VALUE))
+                            .addComponent(cuisine, 0, 0, Short.MAX_VALUE))
                         .addGap(296, 296, 296)
                         .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(typeOfFoodPane, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE))
+                    .addComponent(typeOfFoodPane))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -311,7 +314,7 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
             //temp.add(rp);
             RecipePanelTest rpt = new RecipePanelTest(recipe);
             rpt.addObserver(this);
-            temp.add(rpt);
+            temp.add(rpt, BorderLayout.CENTER);
         }
     }
     

@@ -5,10 +5,10 @@
  */
 package recipesearch;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 import se.chalmers.ait.dat215.lab2.Recipe;
 
 /**
@@ -26,14 +26,22 @@ public class RecipePanelTest extends javax.swing.JPanel {
     public RecipePanelTest(Recipe recipe) {
         this.recipe = recipe;
         initComponents();
-        imageIcon = recipe.getImage();
-        //addObserver(observer);
-        iconLabel.setIcon(recipe.getImage());
+        imageIcon = recipe.getImage(10,10);
+        JLabel iconLabel = new JLabel("", imageIcon, JLabel.CENTER);
+        iconLabel.setIcon(imageIcon);
+        //setLayout(BorderLayout.CENTER);
+        this.add(iconLabel,BorderLayout.CENTER);
     }
     
     public RecipePanelTest() {
         recipe = null;
         imageIcon = null;
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawRect(0, 0, this.getWidth(), this.getHeight());
     }
 
     /**
@@ -45,10 +53,7 @@ public class RecipePanelTest extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        iconLabel = new javax.swing.JLabel();
         viewRecipeButton = new javax.swing.JButton();
-
-        iconLabel.setText("iconLabel");
 
         viewRecipeButton.setText("Se recept");
         viewRecipeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -61,21 +66,15 @@ public class RecipePanelTest extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(iconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addComponent(viewRecipeButton)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(iconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(102, 102, 102)
                 .addComponent(viewRecipeButton)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -83,7 +82,6 @@ public class RecipePanelTest extends javax.swing.JPanel {
 
     private void viewRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRecipeButtonActionPerformed
         pcs.firePropertyChange(recipe.getName(), false, recipe);
-        System.out.println("fired a propertychange in RecipePanelTest");
     }//GEN-LAST:event_viewRecipeButtonActionPerformed
 
     /*@Override
@@ -93,7 +91,6 @@ public class RecipePanelTest extends javax.swing.JPanel {
     }*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel iconLabel;
     private javax.swing.JButton viewRecipeButton;
     // End of variables declaration//GEN-END:variables
 
