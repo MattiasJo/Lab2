@@ -36,10 +36,15 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
 
         typeOfFoodPane = new javax.swing.JTabbedPane();
         allCategoriesPanel = new javax.swing.JPanel();
+        jScrollBar5 = new javax.swing.JScrollBar();
         meatPanel = new javax.swing.JPanel();
+        jScrollBar4 = new javax.swing.JScrollBar();
         fishPanel = new javax.swing.JPanel();
+        jScrollBar3 = new javax.swing.JScrollBar();
         vegoPanel = new javax.swing.JPanel();
+        jScrollBar2 = new javax.swing.JScrollBar();
         chickenPanel = new javax.swing.JPanel();
+        jScrollBar1 = new javax.swing.JScrollBar();
         maxTime = new javax.swing.JComboBox();
         maxPrice = new javax.swing.JComboBox();
         difficulty = new javax.swing.JComboBox();
@@ -72,11 +77,14 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
         allCategoriesPanel.setLayout(allCategoriesPanelLayout);
         allCategoriesPanelLayout.setHorizontalGroup(
             allCategoriesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 721, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, allCategoriesPanelLayout.createSequentialGroup()
+                .addContainerGap(700, Short.MAX_VALUE)
+                .addComponent(jScrollBar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         allCategoriesPanelLayout.setVerticalGroup(
             allCategoriesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addComponent(jScrollBar5, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
 
         typeOfFoodPane.addTab("Alla kategorier", null, allCategoriesPanel, "");
@@ -85,11 +93,14 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
         meatPanel.setLayout(meatPanelLayout);
         meatPanelLayout.setHorizontalGroup(
             meatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 721, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, meatPanelLayout.createSequentialGroup()
+                .addContainerGap(700, Short.MAX_VALUE)
+                .addComponent(jScrollBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         meatPanelLayout.setVerticalGroup(
             meatPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addComponent(jScrollBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
 
         typeOfFoodPane.addTab("Kött", meatPanel);
@@ -98,11 +109,14 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
         fishPanel.setLayout(fishPanelLayout);
         fishPanelLayout.setHorizontalGroup(
             fishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 721, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fishPanelLayout.createSequentialGroup()
+                .addContainerGap(700, Short.MAX_VALUE)
+                .addComponent(jScrollBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         fishPanelLayout.setVerticalGroup(
             fishPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addComponent(jScrollBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
 
         typeOfFoodPane.addTab("Fisk", fishPanel);
@@ -111,11 +125,14 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
         vegoPanel.setLayout(vegoPanelLayout);
         vegoPanelLayout.setHorizontalGroup(
             vegoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 721, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, vegoPanelLayout.createSequentialGroup()
+                .addContainerGap(700, Short.MAX_VALUE)
+                .addComponent(jScrollBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         vegoPanelLayout.setVerticalGroup(
             vegoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addComponent(jScrollBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
 
         typeOfFoodPane.addTab("Vegetariskt", vegoPanel);
@@ -126,11 +143,14 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
         chickenPanel.setLayout(chickenPanelLayout);
         chickenPanelLayout.setHorizontalGroup(
             chickenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 721, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chickenPanelLayout.createSequentialGroup()
+                .addContainerGap(700, Short.MAX_VALUE)
+                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         chickenPanelLayout.setVerticalGroup(
             chickenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+            .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
 
         typeOfFoodPane.addTab("Kyckling", chickenPanel);
@@ -312,9 +332,9 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
             //RecipePanel rp = new RecipePanel(recipe);
             //rp.addObserver(this);
             //temp.add(rp);
-            RecipePanelTest rpt = new RecipePanelTest(recipe);
+            recipesearch.RecipePanel rpt = new recipesearch.RecipePanel(recipe);
             rpt.addObserver(this);
-            temp.add(rpt, BorderLayout.CENTER);
+            temp.add(rpt, FlowLayout.CENTER);
         }
     }
     
@@ -337,6 +357,11 @@ public class RecipeSearchView extends javax.swing.JFrame implements PropertyChan
     private javax.swing.JMenu fileMenu;
     private javax.swing.JPanel fishPanel;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollBar jScrollBar2;
+    private javax.swing.JScrollBar jScrollBar3;
+    private javax.swing.JScrollBar jScrollBar4;
+    private javax.swing.JScrollBar jScrollBar5;
     private javax.swing.JComboBox maxPrice;
     private javax.swing.JLabel maxPriceLabel;
     private javax.swing.JComboBox maxTime;

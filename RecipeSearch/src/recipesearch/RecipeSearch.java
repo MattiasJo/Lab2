@@ -8,6 +8,7 @@ package recipesearch;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.lab2.Recipe;
 
 public class RecipeSearch implements PropertyChangeListener {
@@ -15,13 +16,10 @@ public class RecipeSearch implements PropertyChangeListener {
     //private RecipeView rv = new RecipeView();
     private RecipeSearchView rsv = new RecipeSearchView();
     private RecipeView rv;
-    private TestClass test;
     
     public RecipeSearch() {
-        //rv.addObserver(this);
         rsv.addObserver(this);
         rsv.setVisible(true);
-        test = new TestClass();
     }
     
     /**

@@ -5,9 +5,13 @@
  */
 package recipesearch;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import se.chalmers.ait.dat215.lab2.Recipe;
+import java.util.List;
+import javax.swing.JLabel;
+import se.chalmers.ait.dat215.lab2.*;
 
 /**
  *
@@ -16,13 +20,28 @@ import se.chalmers.ait.dat215.lab2.Recipe;
 public class RecipeView extends javax.swing.JFrame {
 
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-    
+    private List<Ingredient> ingredientList;
+
     /**
      * Creates new form RecipeView
      */
     public RecipeView(Recipe recipe) {
         initComponents();
         recipeNameLabel.setText(recipe.getName());
+        ingredientList = recipe.getIngredients();
+        String ingredientString="";
+        timeLabel.setText("Tid: " + Integer.toString(recipe.getTime()) + " min\n\n");
+        for (Ingredient ing : ingredientList) {
+            ingredientString += ing.getName() + "\t" + ing.getAmount() + "\n";
+        }
+        ingredientsTextArea.setText(ingredientString);
+        howToTextArea.setText(recipe.getDescription());
+        nbrOfServings.setText(Integer.toString(recipe.getServings()));
+        howToPanel.setLayout(new BorderLayout());
+        //JLabel iconLabel = new JLabel("", recipe.getImage(), JLabel.CENTER);
+        iconLabel2.setIcon(recipe.getImage(100, 100));
+        //howToPanel.add(iconLabel, BorderLayout.CENTER);
+        
     }
     
     public RecipeView() {
@@ -46,17 +65,21 @@ public class RecipeView extends javax.swing.JFrame {
         backward = new javax.swing.JButton();
         recipeNameLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jSplitPane2 = new javax.swing.JSplitPane();
+        timeLabel = new javax.swing.JLabel();
+        nbrOfServings = new javax.swing.JLabel();
+        recipePanel = new javax.swing.JSplitPane();
+        ingredientsPanel = new javax.swing.JScrollPane();
+        ingredientsTextArea = new javax.swing.JTextArea();
+        howToPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        howToTextArea = new javax.swing.JTextArea();
+        iconLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(678, 476));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -71,12 +94,9 @@ public class RecipeView extends javax.swing.JFrame {
 
         jLabel2.setText("Antal portioner:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        timeLabel.setText("<time>");
+
+        nbrOfServings.setText("<nbrOfServings>");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,11 +107,13 @@ public class RecipeView extends javax.swing.JFrame {
                 .addComponent(backward, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addComponent(recipeNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                .addGap(91, 91, 91)
+                .addComponent(timeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(nbrOfServings)
+                .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,15 +123,49 @@ public class RecipeView extends javax.swing.JFrame {
                     .addComponent(backward)
                     .addComponent(recipeNameLabel)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(timeLabel)
+                    .addComponent(nbrOfServings))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        ingredientsPanel.setPreferredSize(new java.awt.Dimension(164, 84));
 
-        jSplitPane2.setLeftComponent(jScrollPane1);
+        ingredientsTextArea.setColumns(20);
+        ingredientsTextArea.setRows(5);
+        ingredientsTextArea.setFocusable(false);
+        ingredientsTextArea.setPreferredSize(new java.awt.Dimension(180, 80));
+        ingredientsPanel.setViewportView(ingredientsTextArea);
+
+        recipePanel.setLeftComponent(ingredientsPanel);
+
+        howToTextArea.setColumns(20);
+        howToTextArea.setRows(5);
+        jScrollPane1.setViewportView(howToTextArea);
+
+        javax.swing.GroupLayout howToPanelLayout = new javax.swing.GroupLayout(howToPanel);
+        howToPanel.setLayout(howToPanelLayout);
+        howToPanelLayout.setHorizontalGroup(
+            howToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(howToPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(howToPanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(iconLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        howToPanelLayout.setVerticalGroup(
+            howToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(howToPanelLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(iconLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        recipePanel.setRightComponent(howToPanel);
 
         jMenu1.setText("File");
 
@@ -133,14 +189,14 @@ public class RecipeView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jSplitPane2)
+            .addComponent(recipePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE))
+                .addComponent(recipePanel))
         );
 
         pack();
@@ -149,10 +205,6 @@ public class RecipeView extends javax.swing.JFrame {
     private void backwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backwardActionPerformed
         pcs.firePropertyChange("back", true, false);
     }//GEN-LAST:event_backwardActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
@@ -195,7 +247,11 @@ public class RecipeView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backward;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JPanel howToPanel;
+    private javax.swing.JTextArea howToTextArea;
+    private javax.swing.JLabel iconLabel2;
+    private javax.swing.JScrollPane ingredientsPanel;
+    private javax.swing.JTextArea ingredientsTextArea;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -203,8 +259,9 @@ public class RecipeView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel nbrOfServings;
     private javax.swing.JLabel recipeNameLabel;
+    private javax.swing.JSplitPane recipePanel;
+    private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables
 }

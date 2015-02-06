@@ -5,27 +5,45 @@
  */
 package recipesearch;
 
+import java.awt.*;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import javax.swing.*;
 import se.chalmers.ait.dat215.lab2.Recipe;
 
 /**
  *
- * @author Mattias
+ * @author Shif
  */
 public class RecipePanel extends javax.swing.JPanel {
-            
+    
+    private final Recipe recipe;
+    private final ImageIcon imageIcon;
+
     /**
-     * Creates new form RecipePanel
+     * Creates new form RecipePanelTest
      */
-    public RecipePanel() {
-        initComponents();
-    }
-    /*
     public RecipePanel(Recipe recipe) {
+        this.recipe = recipe;
+        imageIcon = recipe.getImage(50,50);
+        JLabel iconLabel = new JLabel("", imageIcon, JLabel.CENTER);
+        iconLabel.setIcon(imageIcon);
+        this.add(iconLabel,BorderLayout.CENTER);
         initComponents();
-        timeLabel.setText(Integer.toString(recipe.getTime()));
-        this.add(timeLabel);
-        timeLabel.setVisible(true);
-    }*/
+        setLayout(new FlowLayout());
+        recipeName.setText(recipe.getName());
+    }
+    
+    public RecipePanel() {
+        recipe = null;
+        imageIcon = null;
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawRect(0, 0, this.getWidth(), this.getHeight());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,66 +54,58 @@ public class RecipePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        recipeIconLabel = new javax.swing.JPanel();
-        timeLabel = new javax.swing.JLabel();
-        searchButton = new javax.swing.JButton();
+        viewRecipeButton = new javax.swing.JButton();
+        recipeName = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout recipeIconLabelLayout = new javax.swing.GroupLayout(recipeIconLabel);
-        recipeIconLabel.setLayout(recipeIconLabelLayout);
-        recipeIconLabelLayout.setHorizontalGroup(
-            recipeIconLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        recipeIconLabelLayout.setVerticalGroup(
-            recipeIconLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 95, Short.MAX_VALUE)
-        );
-
-        timeLabel.setText("x min");
-
-        searchButton.setText("Se recept");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
+        viewRecipeButton.setText("Se recept");
+        viewRecipeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
+                viewRecipeButtonActionPerformed(evt);
             }
         });
+
+        recipeName.setText("<recipeName>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(recipeIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(timeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(searchButton)))
-                .addContainerGap())
+                .addComponent(recipeName)
+                .addGap(18, 18, 18)
+                .addComponent(viewRecipeButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(recipeIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchButton)
-                    .addComponent(timeLabel))
-                .addContainerGap())
+                    .addComponent(recipeName)
+                    .addComponent(viewRecipeButton))
+                .addGap(53, 53, 53))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButtonActionPerformed
+    private void viewRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRecipeButtonActionPerformed
+        pcs.firePropertyChange(recipe.getName(), false, recipe);
+    }//GEN-LAST:event_viewRecipeButtonActionPerformed
 
-
+    /*@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        imageIcon.paintIcon(this, g, 0, 0);
+    }*/
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel recipeIconLabel;
-    private javax.swing.JButton searchButton;
-    private javax.swing.JLabel timeLabel;
+    private javax.swing.JLabel recipeName;
+    private javax.swing.JButton viewRecipeButton;
     // End of variables declaration//GEN-END:variables
+
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    
+    public void addObserver(PropertyChangeListener observer) { 
+        this.pcs.addPropertyChangeListener(observer);
+    }
+    
 }
