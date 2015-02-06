@@ -19,6 +19,7 @@ public class RecipeSearch implements PropertyChangeListener {
     
     public RecipeSearch() {
         rsv.addObserver(this);
+        rsv.pack();
         rsv.setVisible(true);
     }
     

@@ -50,6 +50,9 @@
     <Property name="title" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
       <ResourceString bundle="recipesearch/resources/RecipeSearch.properties" key="Application.title" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
     </Property>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[754, 478]"/>
+    </Property>
     <Property name="name" type="java.lang.String" value="applicationFrame" noResource="true"/>
   </Properties>
   <SyntheticProperties>
@@ -95,8 +98,7 @@
                           <Component id="difficulty" max="32767" attributes="0"/>
                           <Component id="cuisine" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
-                      <Component id="searchButton" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Component id="typeOfFoodPane" max="32767" attributes="0"/>
               </Group>
@@ -106,32 +108,20 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="maxTime" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="maxTimeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="difficultyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="difficulty" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="maxTimeLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="maxTime" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="difficultyLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="difficulty" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="maxPrice" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="maxPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="cuisineLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cuisine" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="maxPriceLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="maxPrice" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="cuisineLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="cuisine" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="typeOfFoodPane" max="32767" attributes="0"/>
@@ -142,6 +132,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="typeOfFoodPane">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[742, 399]"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="typeOfFoodPaneMouseClicked"/>
       </Events>
@@ -151,6 +146,9 @@
         <Container class="javax.swing.JPanel" name="allCategoriesPanel">
           <Properties>
             <Property name="autoscrolls" type="boolean" value="true"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[721, 353]"/>
+            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -173,7 +171,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollBar5" alignment="0" pref="348" max="32767" attributes="0"/>
+                  <Component id="jScrollBar5" alignment="0" pref="353" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -183,6 +181,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="meatPanel">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[721, 353]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="K&#xf6;tt">
@@ -203,7 +206,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollBar4" alignment="0" pref="348" max="32767" attributes="0"/>
+                  <Component id="jScrollBar4" alignment="0" pref="353" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -213,6 +216,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="fishPanel">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[721, 353]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Fisk">
@@ -233,7 +241,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollBar3" alignment="0" pref="348" max="32767" attributes="0"/>
+                  <Component id="jScrollBar3" alignment="0" pref="353" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -243,6 +251,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="vegoPanel">
+          <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[721, 353]"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Vegetariskt">
@@ -263,7 +276,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollBar2" alignment="0" pref="348" max="32767" attributes="0"/>
+                  <Component id="jScrollBar2" alignment="0" pref="353" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -275,6 +288,9 @@
         <Container class="javax.swing.JPanel" name="chickenPanel">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="F&#xf6;reslagna recept"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[721, 353]"/>
+            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -296,7 +312,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollBar1" alignment="0" pref="348" max="32767" attributes="0"/>
+                  <Component id="jScrollBar1" alignment="0" pref="353" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -331,6 +347,9 @@
         </Property>
         <Property name="autoscrolls" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maxTimeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="maxPrice">
       <Properties>
@@ -349,6 +368,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maxPriceActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="difficulty">
       <Properties>
@@ -361,6 +383,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="difficultyActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cuisine">
       <Properties>
@@ -376,6 +401,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cuisineActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="maxTimeLabel">
       <Properties>
@@ -396,14 +424,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Sv&#xe5;righetsgrad:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="searchButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="S&#xf6;k"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchButtonActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
