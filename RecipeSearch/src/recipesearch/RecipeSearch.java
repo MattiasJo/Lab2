@@ -19,15 +19,14 @@ public class RecipeSearch implements PropertyChangeListener {
     
     public RecipeSearch() {
         rsv.addObserver(this);
-        rsv.pack();
-        rsv.setVisible(true);
+        rsv.setLocation(100, 100);
+        rsv.setVisible(true);    
     }
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Starting RecipeSearch");
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -45,7 +44,6 @@ public class RecipeSearch implements PropertyChangeListener {
             @Override
             public void run() {
                 //This code will run before shutdown
-                System.out.println("Closing RecipeSearch");
             }
         }));
     }
@@ -53,11 +51,13 @@ public class RecipeSearch implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("back")) {
             rv.setVisible(false);
+            rsv.setLocation(rv.getLocation());
             rsv.setVisible(true);
-        } else if(evt.getPropertyName().equals("search")) {
+        /*} else if(evt.getPropertyName().equals("search")) {
             rsv.updateView();
-        } else if (evt.getNewValue() instanceof Recipe) {
+        */} else if (evt.getNewValue() instanceof Recipe) {
             rv = new RecipeView((Recipe)evt.getNewValue());
+            rv.setLocation(rsv.getLocation());
             rv.addObserver(this);
             rsv.setVisible(false);
             rv.setVisible(true);

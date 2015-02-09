@@ -28,10 +28,11 @@ public class RecipePanel extends javax.swing.JPanel {
         imageIcon = recipe.getImage(50,50);
         JLabel iconLabel = new JLabel("", imageIcon, JLabel.CENTER);
         iconLabel.setIcon(imageIcon);
-        this.add(iconLabel,BorderLayout.CENTER);
+        this.add(iconLabel,BorderLayout.WEST);
         initComponents();
         setLayout(new FlowLayout());
         recipeName.setText(recipe.getName());
+        this.validate();
     }
     
     public RecipePanel() {
@@ -42,7 +43,7 @@ public class RecipePanel extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawRect(0, 0, this.getWidth(), this.getHeight());
+        g.drawRect(0, 0, this.getWidth()-3, this.getHeight()-3);
     }
 
     /**
@@ -64,26 +65,28 @@ public class RecipePanel extends javax.swing.JPanel {
             }
         });
 
+        recipeName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         recipeName.setText("<recipeName>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(recipeName)
-                .addGap(18, 18, 18)
-                .addComponent(viewRecipeButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(92, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(recipeName)
+                    .addComponent(viewRecipeButton))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(recipeName)
-                    .addComponent(viewRecipeButton))
-                .addGap(53, 53, 53))
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addComponent(recipeName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(viewRecipeButton)
+                .addGap(29, 29, 29))
         );
     }// </editor-fold>//GEN-END:initComponents
 
